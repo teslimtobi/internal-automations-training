@@ -8,7 +8,7 @@ Deliverables and notes for the 8-week internal automations training program.
 | 1 | Mon | 4 parts of every workflow (trigger, steps, decisions, output) | Done | [monday-process-mapping.md](week-1/monday-process-mapping.md) |
 | 1 | Tue | Scenario A actors, tools and steps | Done (revised after 1:1 feedback) | [tuesday-scenario-a-breakdown.md](week-1/tuesday-scenario-a-breakdown.md) |
 | 1 | Wed | Scenario A swimlane flowchart in Lucidchart | Done (revised after 1:1 feedback) | [wednesday-swimlane-mapping.md](week-1/wednesday-swimlane-mapping.md) |
-| 1 | Thu | Gaps in red, SOP comparison, 3 questions for Ada/Kemi | In progress | |
+| 1 | Thu | Gaps in red, SOP comparison, 3 questions for Ada/Kemi | Done | [thursday-gaps-and-questions.md](week-1/thursday-gaps-and-questions.md) |
 | 1 | Fri | CI/CD flowchart + ownership comparison | Not started | |
 
 ## Revision note (Week 1 feedback)
