@@ -1,0 +1,69 @@
+name: Blog draft pipeline
+
+# Trigger: any push that adds or changes a blog draft (or a manual run)
+on:
+  push:
+    paths:
+      - "blogs/**.md"
+  workflow_dispatch:
+
+jobs:
+  # Job 1 (CI): convert each draft to Word and run the Appnable checker
+  checklist-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install pandoc and python-docx
+        run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq pandoc
+          pip install python-docx
+
+      - name: Run the Appnable blog checklist (fails on any FIX item)
+        run: bash scripts/check_blogs.sh
+
+      - name: Save the Word drafts and check results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: checked-drafts
+          path: build/
+
+  # Job 2 (gate): waits for a person to approve, like the SME + Marketing review
+  marketing-review:
+    needs: checklist-test
+    runs-on: ubuntu-latest
+    environment: marketing-review
+    steps:
+      - name: Review approved
+        run: echo "Marketing / SME review approved by ${{ github.actor }}"
+
+  # Job 3 (CD): mark the approved drafts as ready to publish
+  publish:
+    needs: marketing-review
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download the checked drafts
+        uses: actions/download-artifact@v4
+        with:
+          name: checked-drafts
+          path: build/
+
+      - name: Release ready-to-publish drafts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ready-to-publish
+          path: build/*.docx
+
+      - name: Write the publish summary
+        run: |
+          echo "## Ready to publish" >> "$GITHUB_STEP_SUMMARY"
+          for f in build/*.docx; do echo "- $(basename "$f")" >> "$GITHUB_STEP_SUMMARY"; done
+          echo "" >> "$GITHUB_STEP_SUMMARY"
+          echo "Next: upload to the website and log the primary keyword in the content tracker." >> "$GITHUB_STEP_SUMMARY"
