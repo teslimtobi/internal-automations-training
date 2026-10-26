@@ -24,13 +24,13 @@ The worst part is that nobody sees it stop. There is no alert when a folder is n
 
 ## How Appnable automates onboarding in Microsoft 365
 
-Appnable builds onboarding flows on the tools your team already uses. When a signed contract arrives in Outlook, a flow can create the SharePoint folder, open a Teams channel and send the welcome email with the kickoff form attached.
+Appnable builds onboarding flows on the tools your team already uses. When a signed contract arrives in Outlook, a flow can create the SharePoint folder, open a Teams channel and send the welcome email with the kickoff form attached. You can see how this fits our wider work on [Appnable's automation service](https://www.appnable.com/solutions/).
 
 Each step has a named owner and a clear trigger. If something fails, the right person gets a message straight away instead of finding out days later. Microsoft's own [Power Automate documentation](https://learn.microsoft.com/en-us/power-automate/) shows the building blocks, and we shape them around how your firm really works.
 
 ## Where DIY onboarding automation stalls
 
-Plenty of teams try to organize this themselves. The first flow usually works. The trouble starts when the process changes, the person who built it moves on, or nobody knows which flow sends which email.
+Plenty of teams try to build this themselves. The first flow usually works. The trouble starts when the process changes, the person who built it moves on, or nobody knows which flow sends which email.
 
 A partner brings a written map of the process, tested flows and someone to call when a step breaks. That keeps the automation running long after the first launch.
 
