@@ -29,22 +29,22 @@ My own process is the **Appnable Blog Writing skill** I built. Its final check, 
 
 ```mermaid
 flowchart LR
-  subgraph Author
-    A([Author pushes a blog draft to blogs/]) 
-    F[Author fixes the draft and pushes again]
+  subgraph AUTH["Author"]
+    A(["Author pushes a blog draft to the blogs folder"])
+    F["Author fixes the draft and pushes again"]
   end
-  subgraph GitHub_Actions[GitHub Actions - automatic]
-    B[Job 1 checklist-test: convert draft to Word]
-    C[Run seo_check.py: Appnable checklist]
-    D{Any FIX items?}
-    E[Run fails: red cross, FIX list in summary]
-    G[Save checked drafts]
-    J[Job 3 publish: release ready-to-publish draft]
-    K([Output: ready-to-publish Word draft + summary])
+  subgraph GHA["GitHub Actions - automatic"]
+    B["Job 1 checklist-test: convert draft to Word"]
+    C["Run seo_check.py: Appnable checklist"]
+    D{"Any FIX items?"}
+    E["Run fails: red cross, FIX list in summary"]
+    G["Save checked drafts"]
+    J["Job 3 publish: release ready-to-publish draft"]
+    K(["Output: ready-to-publish Word draft and summary"])
   end
-  subgraph Reviewer[Marketing / SME reviewer]
-    H{Approve in marketing-review?}
-    I([Stopped: not published])
+  subgraph REV["Marketing or SME reviewer"]
+    H{"Approve in marketing-review?"}
+    I(["Stopped: not published"])
   end
   A --> B --> C --> D
   D -- Yes --> E --> F --> B
