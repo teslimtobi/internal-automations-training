@@ -1,0 +1,222 @@
+{
+  "name": "Week 3 - Scenario B: Website lead to tracker and alert",
+  "nodes": [
+    {
+      "id": "a1",
+      "name": "Website contact form (test)",
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.3,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "northwind-leads",
+      "parameters": {
+        "formTitle": "Northwind Studio - Contact us (TEST)",
+        "formDescription": "Practice form for the automations training. Test data only.",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Name",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Email",
+              "fieldType": "email",
+              "requiredField": true
+            },
+            {
+              "fieldLabel": "Company"
+            },
+            {
+              "fieldLabel": "Budget (USD)",
+              "fieldType": "number"
+            },
+            {
+              "fieldLabel": "Message",
+              "fieldType": "textarea",
+              "requiredField": true
+            }
+          ]
+        },
+        "responseMode": "onReceived",
+        "options": {
+          "respondWithOptions": {
+            "values": {
+              "formSubmittedText": "Thanks! We'll reply within 24 hours."
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "a2",
+      "name": "Add row to Leads Tracker",
+      "type": "n8n-nodes-base.dataTable",
+      "typeVersion": 1.1,
+      "position": [
+        260,
+        0
+      ],
+      "parameters": {
+        "resource": "row",
+        "operation": "insert",
+        "dataTableId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "W8J8Ub0tRiSab51u"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "submitted_at": "={{ $json.submittedAt }}",
+            "name": "={{ $json.Name }}",
+            "email": "={{ $json.Email }}",
+            "company": "={{ $json.Company }}",
+            "budget_usd": "={{ $json['Budget (USD)'] }}",
+            "message": "={{ $json.Message }}",
+            "status": "New"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "submitted_at",
+              "displayName": "submitted_at",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "name",
+              "displayName": "name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "email",
+              "displayName": "email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "company",
+              "displayName": "company",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "budget_usd",
+              "displayName": "budget_usd",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "number",
+              "canBeUsedToMatch": true,
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "status",
+              "displayName": "status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "a3",
+      "name": "Email alert to sales (test inbox)",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [
+        520,
+        0
+      ],
+      "credentials": {
+        "smtp": {
+          "id": "gE8zo8xuODT3wdqt",
+          "name": "Test SMTP (local inbox)"
+        }
+      },
+      "parameters": {
+        "fromEmail": "automations@northwind.test",
+        "toEmail": "sales@northwind.test",
+        "subject": "=New website lead: {{ $json.name }} ({{ $json.company }})",
+        "emailFormat": "text",
+        "text": "=A new lead came in through the website form and was added to the Leads Tracker.\n\nName: {{ $json.name }}\nEmail: {{ $json.email }}\nCompany: {{ $json.company }}\nBudget: ${{ $json.budget_usd }}\nMessage: {{ $json.message }}\nReceived: {{ $json.submitted_at }}\n\nPlease reply within 24 hours.",
+        "options": {
+          "appendAttribution": false
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Website contact form (test)": {
+      "main": [
+        [
+          {
+            "node": "Add row to Leads Tracker",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Add row to Leads Tracker": {
+      "main": [
+        [
+          {
+            "node": "Email alert to sales (test inbox)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveDataSuccessExecution": "all",
+    "saveManualExecutions": true
+  }
+}
