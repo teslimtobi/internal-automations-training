@@ -1,4 +1,3 @@
-week-3/README.md
 # Week 3: First Automation Platform (Scenario B)
 
 **Goal:** build the same simple automation twice: once in **n8n**, once in **Power Automate**.
