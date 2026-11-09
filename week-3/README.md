@@ -1,3 +1,4 @@
+week-3/README.md
 # Week 3: First Automation Platform (Scenario B)
 
 **Goal:** build the same simple automation twice: once in **n8n**, once in **Power Automate**.
@@ -13,14 +14,14 @@ All builds use **test data and test addresses only** (`@example.test`, `@northwi
 | Day | File | What it is |
 | --- | --- | --- |
 | Mon | [monday-tool-notes.md](monday-tool-notes.md) | How n8n, Power Automate, Zapier and Make name triggers and actions |
-| Tue | [flow-map.png](flow-map.png) | The 3-box map of the flow |
+| Tue | [flow-map.png](screenshots/flow-map.png) | The 3-box map of the flow |
 | Wed | [n8n/scenario-b-lead-workflow.json](n8n/scenario-b-lead-workflow.json) + [screenshots](screenshots/) | The n8n build and its successful run |
-| Thu | [power-automate-build-guide.md](power-automate-build-guide.md) | Step-by-step Power Automate build |
+| Thu | [power-automate-build-guide.md](power-automate-build-guide.md) + [screenshots](screenshots/) | The Power Automate build and its successful run |
 | Fri | [friday-tool-comparison.md](friday-tool-comparison.md) | 5-line comparison and self-check answers |
 
 ## Tuesday: the flow map
 
-![3-box flow map](flow-map.png)
+![3-box flow map](screenshots/flow-map.png)
 
 ## Wednesday: the n8n build
 
@@ -60,8 +61,28 @@ All builds use **test data and test addresses only** (`@example.test`, `@northwi
 
 ## Thursday: the Power Automate build
 
-Same 3 boxes: **Microsoft Forms → Excel Online "Add a row into a table" → Teams "Post message"**. The step-by-step guide is in [power-automate-build-guide.md](power-automate-build-guide.md). The run screenshot will be added after the test run in Appnable's Microsoft 365.
+**Where it runs:** Appnable's Microsoft 365 (test form, test Excel tracker, Teams message to myself only).
+
+| Step | Power Automate action | What it does |
+| --- | --- | --- |
+| 1 | Microsoft Forms: *When a new response is submitted* | Starts when "Northwind Studio - Contact us (TEST)" is submitted |
+| 2 | Microsoft Forms: *Get response details* | Fetches the answers (the trigger only gives the response ID) |
+| 3 | Excel Online (Business): *Add a row into a table* | Adds the lead to the `Leads` table, status *New* |
+| 4 | Teams: *Post message in a chat or channel* | Flow bot sends me the lead details and "Please reply within 24 hours" |
+
+Click-by-click steps: [power-automate-build-guide.md](power-automate-build-guide.md).
+
+### Successful run (same test lead: "Sam Tester", Brightside Bakery, $12,000)
+
+1. **"Your flow ran successfully"**, with green ticks on all 4 steps (about 3 seconds):
+
+   ![Power Automate run](screenshots/07-power-automate-run.jpg)
+
+2. The new row in the Excel tracker:
+
+   ![Excel row](screenshots/08-power-automate-excel-row.jpg)
 
 ## Friday: comparison
 
 See [friday-tool-comparison.md](friday-tool-comparison.md). **Pick for this flow: Power Automate.** Everything Northwind uses is already in Microsoft 365.
+
