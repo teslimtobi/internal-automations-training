@@ -16,9 +16,9 @@ Deliverables and notes for the 8-week internal automations training program.
 | 2 | Thu | Pain points with frequency and cost estimates | Done | [scenario-a-as-is-document.md](week-2/scenario-a-as-is-document.md) |
 | 2 | Fri | Tested as a new hire, fixed guesses, checked against Asana guide (as-is document v1.0) | Done | [friday-new-hire-test.md](week-2/friday-new-hire-test.md) |
 | 3 | Mon | How n8n, Power Automate, Zapier and Make name triggers and actions | Done | [monday-tool-notes.md](week-3/monday-tool-notes.md) |
-| 3 | Tue | Scenario B flow mapped in 3 boxes (form, tracker row, alert) | Done | [flow-map.png](week-3/flow-map.png) |
+| 3 | Tue | Scenario B flow mapped in 3 boxes (form, tracker row, alert) | Done | [flow-map.png](week-3/screenshots/flow-map.png) |
 | 3 | Wed | Scenario B built in n8n, one successful run | Done | [week-3 README](week-3/README.md) · [workflow JSON](week-3/n8n/scenario-b-lead-workflow.json) |
-| 3 | Thu | Same flow in Power Automate | Guide done, test run pending | [power-automate-build-guide.md](week-3/power-automate-build-guide.md) |
+| 3 | Thu | Same flow rebuilt in Power Automate (Forms, Excel, Teams), one successful run | Done | [power-automate-build-guide.md](week-3/power-automate-build-guide.md) · [run screenshot](week-3/screenshots/07-power-automate-run.jpg) |
 | 3 | Fri | Make skimmed, 5-line tool comparison, self-check | Done | [friday-tool-comparison.md](week-3/friday-tool-comparison.md) |
 
 ## Revision note (Week 1 feedback)
