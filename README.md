@@ -20,6 +20,11 @@ Deliverables and notes for the 8-week internal automations training program.
 | 3 | Wed | Scenario B built in n8n, one successful run | Done | [week-3 README](week-3/README.md) · [workflow JSON](week-3/n8n/scenario-b-lead-workflow.json) |
 | 3 | Thu | Same flow rebuilt in Power Automate (Forms, Excel, Teams), one successful run | Done | [power-automate-build-guide.md](week-3/power-automate-build-guide.md) · [run screenshot](week-3/screenshots/07-power-automate-run.jpg) |
 | 3 | Fri | Make skimmed, 5-line tool comparison, self-check | Done | [friday-tool-comparison.md](week-3/friday-tool-comparison.md) |
+| 4 | Mon | n8n error handling + Zapier Paths; 3 ways the flow could fail | Done | [monday-failure-notes.md](week-4/monday-failure-notes.md) |
+| 4 | Tue | If/else branch: over $10k or "retainer" → founder, others → sales | Done | [build-guide.md](week-4/build-guide.md) · [big lead run](week-4/screenshots/01-big-lead-run.png) |
+| 4 | Wed | Spam filter + duplicate check (no second tracker row) | Done | [build-guide.md](week-4/build-guide.md) · [spam run](week-4/screenshots/03-spam-stopped.png) · [duplicate run](week-4/screenshots/04-duplicate-stopped.png) |
+| 4 | Thu | Failure alert in Teams saying what failed, with run link | Done | [week-4 README](week-4/README.md) · [failure alert run](week-4/screenshots/05-failure-alert-run.png) |
+| 4 | Fri | Broke the flow 3 ways, each caught; break log + self-check | Done | [break-log.md](week-4/break-log.md) · [self-check.md](week-4/self-check.md) |
 
 ## Revision note (Week 1 feedback)
 In the first version I rated Contract Intake, Folder & Channel setup and Repo Provisioning as "Operational" because each had a named owner. That was wrong: having an owner does not make a step reliable. The 9-day delay in the scenario came from the folder never being created, which traces back to Ada having to *remember* to tell Kemi. The flowchart, slides and Tuesday breakdown now rate every step by risk and show this as the root cause.
